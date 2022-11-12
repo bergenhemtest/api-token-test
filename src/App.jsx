@@ -17,7 +17,7 @@ function App() {
         >
           Learn Solid
         </a>
-        <p>Testy McTest Workyflowy</p>
+        <p>Simple test</p>
       </header>
     </div>
   );
