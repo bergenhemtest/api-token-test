@@ -17,7 +17,7 @@ function App() {
         >
           Learn Solid
         </a>
-        <p>Another Test workflow</p>
+        <p>Testy McTest workflow</p>
       </header>
     </div>
   );
