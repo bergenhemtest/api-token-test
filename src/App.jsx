@@ -17,6 +17,7 @@ function App() {
         >
           Learn Solid
         </a>
+        <p>Test workflow</p>
       </header>
     </div>
   );
