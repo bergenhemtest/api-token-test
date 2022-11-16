@@ -1,0 +1,61 @@
+name:  Deploy to Staging and Production
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+        
+  deploy-staging:
+    name: Deploy to staging
+    environment:
+      name: Staging
+    runs-on: ubuntu-latest
+    if: github.event.ref == 'refs/heads/main'
+    steps:
+      # Get code from repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+      # Install NodeJS
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      # Run npm install and build on our code
+      - run: npm install
+      - run: npm run build --if-present
+      # Deploy to Netlify using our production secrets
+      - name: Deploy to netlify
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.STAGING_NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=dist --prod
+        
+  deploy-production:
+    name: Deploy to production
+    environment:
+      name: Production
+    needs: [deploy-staging]
+    runs-on: ubuntu-latest
+    steps:
+      # Get code from repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+      # Install NodeJS
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      # Run npm install and build on our code
+      - run: npm install
+      - run: npm run build --if-present
+      # Deploy to Netlify using our production secrets
+      - name: Deploy to netlify
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.PRODUCTION_NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=dist --prod
