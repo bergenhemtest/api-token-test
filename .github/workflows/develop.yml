@@ -1,0 +1,20 @@
+name:  Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+        
+  deploy-staging:
+    name: Deploy to staging
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Deploy to staging using ${{ secrets.mysecret-stag }}
+        
+  deploy-production:
+    name: Deploy to production
+    needs: [deploy-staging]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Deploy to production using ${{ secrets.mysecret-prod }}
