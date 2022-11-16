@@ -1,5 +1,5 @@
 # Name of workflow
-name: Deploy to Develop (Netlify)
+name: Automatically Deploy to Develop (Netlify)
 
 # When workflow is triggered
 on:
@@ -32,7 +32,6 @@ jobs:
         uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.DEV_NETLIFY_SITE_ID }}
+          NETLIFY_SITE_ID: ${{ secrets.DEVELOP_NETLIFY_SITE_ID }}
         with:
           args: deploy --dir=dist --prod
-          secrets: '["DEV_NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
