@@ -17,7 +17,7 @@ function App() {
         >
           Learn Solid
         </a>
-        <p>Testing new workflow</p>
+        <p>Was there an incident?</p>
       </header>
     </div>
   );
