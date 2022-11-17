@@ -17,7 +17,7 @@ function App() {
         >
           Learn Solid
         </a>
-        <p>Was there an incident?</p>
+        <p>Will this be a failure?</p>
       </header>
     </div>
   );
