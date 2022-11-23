@@ -15,6 +15,7 @@ export default defineConfig({
     transformMode: {
       web: [/\.jsx?$/]
     },
+    setupFiles: './setupVitest.js',
     deps: {
       inline: [/solid-js/, /testing-library/]
     } 
