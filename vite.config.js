@@ -10,8 +10,16 @@ export default defineConfig({
     target: 'esnext',
   },
   test: {
+    globals: true,
+    environment: 'jsdom',
+    transformMode: {
+      web: [/\.jsx?$/]
+    },
     deps: {
-      inline: [/testing-library/]
-    }
+      inline: [/solid-js/, /testing-library/]
+    } 
+  },
+  resolve: {
+    conditions: ['development', 'browser']
   }
 });
