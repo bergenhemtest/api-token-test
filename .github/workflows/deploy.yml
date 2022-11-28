@@ -7,9 +7,22 @@ on:
     branches: [ main ]
 
 jobs:
+  automated-tests:
+    name: Automated Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          node-version: 18.x
+      - run: npm install
+      - run: npm run build --if-present
+      - run: npm test
+
   deploy-develop:
     name: Deploy to develop
     if: github.event_name == 'pull_request'
+    needs: [automated-tests]
     environment:
       name: Develop
     runs-on: ubuntu-latest
