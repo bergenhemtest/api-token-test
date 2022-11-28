@@ -8,4 +8,10 @@ describe('App Component Tests', () => {
     const learnElement = screen.getByText('Learn Solid');
     expect(learnElement).toBeInTheDocument();
   });
+
+  it('should render a button to generate errors', () => {
+    render(() => <App />);
+    const errorButton = screen.getByRole('button');
+    expect(errorButton).toBeInTheDocument();
+  });
 });
