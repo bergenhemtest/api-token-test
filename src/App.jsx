@@ -17,6 +17,7 @@ function App() {
         >
           Learn Solid
         </a>
+        <button class={styles.sampleButton}>Errors</button>
         <p>Will this be a failure?</p>
       </header>
     </div>
