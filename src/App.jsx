@@ -1,10 +1,37 @@
 import logo from './logo.svg';
 import styles from './App.module.css';
 
+import { onMount, createSignal } from 'solid-js';
+import * as Sentry from "@sentry/browser";
+import { BrowserTracing } from "@sentry/tracing";
+
 function App() {
 
+  onMount(() => {
+    console.log("App mounted");
+    Sentry.init({
+      dsn: "https://979354779c2640c2b9464b4e22046c49@o4504176326279168.ingest.sentry.io/4504244182450176",
+      integrations: [new BrowserTracing()],
+    
+      // Set tracesSampleRate to 1.0 to capture 100%
+      // of transactions for performance monitoring.
+      // We recommend adjusting this value in production
+      tracesSampleRate: 1.0,
+    });
+  });
+
+  const [errorStart, setErrorStart] = createSignal(null);
+
   const errorClick = (event) => {
-    console.log("Button Clicked!", event)
+    if(errorStart() === null) {
+      setErrorStart(setInterval(() => {
+        console.log("click started")
+      }, 1000));
+    }
+    else {
+      clearInterval(errorStart());
+      setErrorStart(null);
+    }
   };
 
   return (
