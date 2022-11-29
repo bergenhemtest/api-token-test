@@ -55,7 +55,7 @@ jobs:
     name: Deploy to staging
     environment:
       name: Staging
-    needs: [automated-tests, deploy-develop]
+    needs: [automated-tests]
     runs-on: ubuntu-latest
     if: github.event.ref == 'refs/heads/main'
     steps:
