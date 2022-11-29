@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import styles from './App.module.css';
 
-import { onMount, createSignal } from 'solid-js';
+import { onMount, createSignal, Show } from 'solid-js';
 import * as Sentry from "@sentry/browser";
 import { BrowserTracing } from "@sentry/tracing";
 
@@ -25,7 +25,7 @@ function App() {
   const errorClick = (event) => {
     if(errorStart() === null) {
       setErrorStart(setInterval(() => {
-        console.log("click started")
+        throw new Error('Everything is awful');
       }, 1000));
     }
     else {
@@ -49,7 +49,12 @@ function App() {
         >
           Learn Solid
         </a>
-        <button class={styles.sampleButton} onClick={errorClick}>Errors</button>
+        <Show
+          when={errorStart()}
+          fallback={ <button class={styles.sampleButton} onClick={errorClick}>Start Errors</button>}
+        >
+          <button class={styles.sampleButton} onClick={errorClick}>Stop Errors</button>
+        </Show>
         <p>Will this be a failure?</p>
       </header>
     </div>
