@@ -28,9 +28,9 @@ function App() {
 
     if(!faviconLink) {
       faviconLink = document.createElement('link');
-      link.id = "favicon";
-      link.rel = "shortcut icon";
-      document.head.appendChild(link);
+      faviconLink.id = "favicon";
+      faviconLink.rel = "shortcut icon";
+      document.head.appendChild(faviconLink);
     }
 
     let faviconUrl;
@@ -84,7 +84,7 @@ function App() {
         </a>
         <Show
           when={errorStart()}
-          fallback={ <button class={styles.sampleButton} onClick={errorClick}>Start Errors</button>}
+          fallback={<button class={styles.sampleButton} onClick={errorClick}>Start Errors</button>}
         >
           <button class={styles.sampleButton} onClick={errorClick}>Stop Errors</button>
         </Show>
