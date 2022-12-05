@@ -28,7 +28,8 @@ jobs:
     environment:
       name: Develop
     runs-on: ubuntu-latest
-    
+    env:
+      VITE_ENVIRONMENT: 'develop'
     # Steps in job
     steps:
       # Get code from repo
