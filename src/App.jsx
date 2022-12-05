@@ -26,6 +26,7 @@ function App() {
     let faviconLink = document.querySelector('link[rel="shortcut icon"]') ||
     document.querySelector('link[rel="icon"]');
 
+    // just in case something happens with our favicon
     if(!faviconLink) {
       faviconLink = document.createElement('link');
       faviconLink.id = "favicon";
