@@ -7,10 +7,9 @@ import { BrowserTracing } from "@sentry/tracing";
 
 function App() {
 
-  onMount(() => {
-    console.log("App mounted");
-    
-    const envVar = import.meta.env.VITE_ENVIRONMENT;
+  onMount(() => {   
+    // environment variable comes from GitHub Actions job
+    let envVar = import.meta.env.VITE_ENVIRONMENT;
     
     if(envVar) { //will be undefined in local development
       Sentry.init({
@@ -33,8 +32,25 @@ function App() {
       link.rel = "shortcut icon";
       document.head.appendChild(link);
     }
-    console.log("Environment variable", envVar);
-    console.log("Favicon", faviconLink);
+
+    let faviconUrl;
+
+    switch(envVar) {
+      case "develop":
+        faviconUrl = "/src/assets/favicons/develop-favicon.ico";
+        break;
+      case "staging":
+        faviconUrl = "/src/assets/favicons/staging-favicon.ico";
+        break;
+      case "production":
+        faviconUrl = "/src/assets/favicons/prod-favicon.ico";
+        break;
+      default:
+        faviconUrl = "/src/assets/favicon.ico";
+    }
+
+    faviconLink.href = faviconUrl;
+
   });
 
   const [errorStart, setErrorStart] = createSignal(null);
