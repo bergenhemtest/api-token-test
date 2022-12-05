@@ -18,6 +18,8 @@ function App() {
       // We recommend adjusting this value in production
       tracesSampleRate: 1.0,
     });
+    const envVar = import.meta.env.VITE_ENVIRONMENT;
+    console.log("Environment variable", envVar);
   });
 
   const [errorStart, setErrorStart] = createSignal(null);
