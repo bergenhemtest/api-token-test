@@ -53,9 +53,8 @@ function App() {
       default:
         faviconUrl = "/src/assets/favicon.ico";
     }
-
+    
     faviconLink.href = faviconUrl;
-
   });
 
   const [errorStart, setErrorStart] = createSignal(null);
