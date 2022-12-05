@@ -38,7 +38,6 @@ function App() {
     }
 
     let faviconUrl;
-    envVar = "production";
 
     switch(envVar) {
       case "develop":
@@ -53,7 +52,7 @@ function App() {
       default:
         faviconUrl = "/src/assets/favicon.ico";
     }
-    
+
     faviconLink.href = faviconUrl;
   });
 
