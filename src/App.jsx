@@ -46,7 +46,7 @@ function App() {
       case "staging":
         faviconUrl = stagingIcon;
         break;
-      case "production":
+      case "prod":
         faviconUrl = prodIcon;
         break;
       default:
