@@ -9,11 +9,10 @@ import * as Sentry from "@sentry/browser";
 import { BrowserTracing } from "@sentry/tracing";
 
 function App() {
+  // environment variable comes from GitHub Actions job
+  const envVar = import.meta.env.VITE_ENVIRONMENT;
 
   onMount(() => {   
-    // environment variable comes from GitHub Actions job
-    let envVar = import.meta.env.VITE_ENVIRONMENT;
-    
     if(envVar) { //will be undefined in local development
       Sentry.init({
         dsn: "https://979354779c2640c2b9464b4e22046c49@o4504176326279168.ingest.sentry.io/4504244182450176",
@@ -73,25 +72,16 @@ function App() {
   return (
     <div class={styles.App}>
       <header class={styles.header}>
-        <img src={logo} class={styles.logo} alt="logo" />
-        <p>
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <a
-          class={styles.link}
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
+        <h1>
+          DevOps Testing Sample
+        </h1>
+        <p class={styles.environmentText}>Current Environment: {envVar ? envVar : "Local"}</p>
         <Show
           when={errorStart()}
           fallback={<button class={styles.sampleButton} onClick={errorClick}>Start Errors</button>}
         >
           <button class={styles.sampleButton} onClick={errorClick}>Stop Errors</button>
         </Show>
-        <p>Will this be a failure?</p>
       </header>
     </div>
   );

@@ -3,9 +3,9 @@ import { render, screen } from '@solidjs/testing-library';
 import App from './App';
 
 describe('App Component Tests', () => {
-  it('should render a link to learn solid', () => {
+  it('should render header text: DevOps Testing Sample', () => {
     render(() => <App />);
-    const learnElement = screen.getByText('Learn Solid');
+    const learnElement = screen.getByText('DevOps Testing Sample');
     expect(learnElement).toBeInTheDocument();
   });
 
