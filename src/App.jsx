@@ -1,4 +1,7 @@
 import logo from './logo.svg';
+import developIcon from './assets/favicons/develop-favicon.ico';
+import stagingIcon from './assets/favicons/staging-favicon.ico';
+import prodIcon from './assets/favicons/prod-favicon.ico';
 import styles from './App.module.css';
 
 import { onMount, createSignal, Show } from 'solid-js';
@@ -35,16 +38,17 @@ function App() {
     }
 
     let faviconUrl;
+    envVar = "production";
 
     switch(envVar) {
       case "develop":
-        faviconUrl = "/src/assets/favicons/develop-favicon.ico";
+        faviconUrl = developIcon;
         break;
       case "staging":
-        faviconUrl = "/src/assets/favicons/staging-favicon.ico";
+        faviconUrl = stagingIcon;
         break;
       case "production":
-        faviconUrl = "/src/assets/favicons/prod-favicon.ico";
+        faviconUrl = prodIcon;
         break;
       default:
         faviconUrl = "/src/assets/favicon.ico";
