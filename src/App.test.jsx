@@ -5,7 +5,7 @@ import App from './App';
 describe('App Component Tests', () => {
   it('should render header text: DevOps Testing Sample', () => {
     render(() => <App />);
-    const learnElement = screen.getByText('DevOps Testing Sample');
+    const learnElement = screen.getByText('DevOps Testing Sample - Testing Draft PRs');
     expect(learnElement).toBeInTheDocument();
   });
 
