@@ -73,7 +73,7 @@ function App() {
     <div class={styles.App}>
       <header class={styles.header}>
         <h1>
-          DevOps Testing Sample
+          DevOps Testing Sample - Testing Draft PRs
         </h1>
         <p class={styles.environmentText}>Current Environment: {envVar ? envVar : "Local"}</p>
         <Show
