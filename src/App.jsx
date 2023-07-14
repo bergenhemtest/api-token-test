@@ -75,6 +75,7 @@ function App() {
         <h1>
           DevOps Testing Sample - This is a fantastic app
         </h1>
+        <h2>Initial branch commit</h2>
         <p class={styles.environmentText}>Current Environment: {envVar ? envVar : "Local"}</p>
         <Show
           when={errorStart()}
